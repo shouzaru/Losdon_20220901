@@ -78,6 +78,6 @@ class __TwigTemplate_52f7dba6585dcc496b8bdf2810d39b96 extends \Twig\Template
 
     public function getSourceContext()
     {
-        return new Source("", "display/results/comment_for_row.twig", "/Applications/MAMP/htdocs/20220812【Losdon】_データ登録イチから/cms/public/phpMyAdmin/templates/display/results/comment_for_row.twig");
+        return new Source("", "display/results/comment_for_row.twig", "/Applications/MAMP/htdocs/losdon_apps0823/losdon_apps/public/phpMyAdmin/templates/display/results/comment_for_row.twig");
     }
 }

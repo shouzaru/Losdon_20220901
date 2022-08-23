@@ -35,6 +35,7 @@
                     <ul class="navbar-nav me-auto">
 
                     </ul>
+                    <h1>test</h1>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -72,6 +73,7 @@
                         @endguest
                     </ul>
                 </div>
+                
             </div>
         </nav>
 

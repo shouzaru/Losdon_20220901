@@ -282,6 +282,6 @@ class __TwigTemplate_f65dc8008b5aa0d632041470cc1ae184 extends \Twig\Template
 
     public function getSourceContext()
     {
-        return new Source("", "display/results/checkbox_and_links.twig", "/Applications/MAMP/htdocs/20220812【Losdon】_データ登録イチから/cms/public/phpMyAdmin/templates/display/results/checkbox_and_links.twig");
+        return new Source("", "display/results/checkbox_and_links.twig", "/Applications/MAMP/htdocs/losdon_apps0823/losdon_apps/public/phpMyAdmin/templates/display/results/checkbox_and_links.twig");
     }
 }

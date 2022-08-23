@@ -14,9 +14,9 @@ use App\Http\Controllers\ItemController;//追記
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
@@ -24,3 +24,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // items用の一括ルーティング
 Route::resource('items', ItemController::class);
+
+Route::get('/', [ItemController::class, 'index']);

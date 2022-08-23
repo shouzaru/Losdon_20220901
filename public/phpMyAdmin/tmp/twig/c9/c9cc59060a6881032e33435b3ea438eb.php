@@ -289,6 +289,6 @@ class __TwigTemplate_e2a457e2752ea986021483f82f5d8aae extends \Twig\Template
 
     public function getSourceContext()
     {
-        return new Source("", "database/structure/body_for_table_summary.twig", "/Applications/MAMP/htdocs/20220812【Losdon】_データ登録イチから/cms/public/phpMyAdmin/templates/database/structure/body_for_table_summary.twig");
+        return new Source("", "database/structure/body_for_table_summary.twig", "/Applications/MAMP/htdocs/losdon_apps0823/losdon_apps/public/phpMyAdmin/templates/database/structure/body_for_table_summary.twig");
     }
 }
