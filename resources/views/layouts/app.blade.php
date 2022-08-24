@@ -40,11 +40,11 @@
                     <ul class="navbar-nav ms-auto">
 
                     <!-- 商品登録リンク -->
-                    <a class="nav-link" href="{{ url('/create') }}">
+                    <a class="nav-link" href="{{ url('items/create') }}">
                     {{ ('商品登録') }}
                      </a>
                    <!-- 出荷管理リンク -->
-                    <a class="nav-link" href="{{ url('/create') }}">
+                    <a class="nav-link" href="{{ url('items/create') }}">
                     {{ ('出荷管理') }}
                     </a>
 
