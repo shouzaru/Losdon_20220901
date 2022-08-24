@@ -32,7 +32,7 @@ class ItemController extends Controller
      */
     public function create()
     {
-        //
+       return view('itemsCreate');
     }
 
     /**
@@ -108,7 +108,8 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
-        //
+        return view('itemsShow',[
+            'item'=> $item]);
     }
 
     /**

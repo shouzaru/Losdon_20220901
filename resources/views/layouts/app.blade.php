@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-success bg-opacity-25 shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -35,10 +35,19 @@
                     <ul class="navbar-nav me-auto">
 
                     </ul>
-                    <h1>test</h1>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+
+                    <!-- 商品登録リンク -->
+                    <a class="nav-link" href="{{ url('/create') }}">
+                    {{ ('商品登録') }}
+                     </a>
+                   <!-- 出荷管理リンク -->
+                    <a class="nav-link" href="{{ url('/create') }}">
+                    {{ ('出荷管理') }}
+                    </a>
+
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))

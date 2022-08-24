@@ -26,3 +26,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('items', ItemController::class);
 
 Route::get('/', [ItemController::class, 'index']);
+Route::get('/create', [ItemController::class, 'create']);
+
+Route::get('/show', function () {
+  return view('itemsShow');
+});
+
