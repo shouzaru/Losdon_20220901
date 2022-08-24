@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\Delivery;
 use Illuminate\Http\Request;
+
 use Validator;
 use Auth;
 use Illuminate\Support\Str;
@@ -23,6 +25,13 @@ class ItemController extends Controller
     {
         $items = Item::all();
         return view('items', compact('items'));
+    }
+
+    public static function list(){
+        $items = Item::all();
+        $deliveries = Delivery::all();
+
+        return view('list', compact('items','deliveries'));
     }
 
     /**
