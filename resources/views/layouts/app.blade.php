@@ -47,6 +47,10 @@
                     <a class="nav-link" href="{{ url('items/create') }}">
                     {{ ('出荷管理') }}
                     </a>
+                    <!-- 納品登録 -->
+                    <a class="nav-link" href="{{ url('delivery') }}">
+                    {{ ('納品登録') }}
+                    </a>
 
                         <!-- Authentication Links -->
                         @guest

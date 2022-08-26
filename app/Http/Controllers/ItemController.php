@@ -24,7 +24,8 @@ class ItemController extends Controller
     public function index()
     {
         $items = Item::all();
-        return view('items', compact('items'));
+        $deliveries = Delivery::all();
+        return view('items', compact('items','deliveries'));
     }
 
     public static function list(){
@@ -117,8 +118,7 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
-        return view('itemsShow',[
-            'item'=> $item]);
+        return view('itemsShow',compact('item'));
     }
 
     /**

@@ -1,20 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-<!-- ナビゲーションメニュー -->
-<div class="container mt-2 mb-2">
-    <ul class="nav nav-tabs">
-        <il class="nav-item">
-            <a href="{{ url('items') }}" class="nav-link">商品登録</a>
-        </il>
-        <il class="nav-item">
-            <a href="{{ url('list') }}" class="nav-link">商品一覧</a>
-        </il>
-        <il class="nav-item">
-            <a href="{{ url('delivery') }}" class="nav-link active">納品登録</a>
-        </il>
-    </ul>
-</div>
 
 <!-- Item: 登録されてる商品のリスト -->
 @if (count($items) > 0)
