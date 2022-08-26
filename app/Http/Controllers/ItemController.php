@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use App\Models\Delivery;
+use App\Models\Donation;
 use Illuminate\Http\Request;
 
 use Validator;
@@ -30,8 +31,8 @@ class ItemController extends Controller
     public static function list(){
         $items = Item::all();
         $deliveries = Delivery::all();
-
-        return view('list', compact('items','deliveries'));
+        $donations = Donation::all();
+        return view('list', compact('items','deliveries','donations'));
     }
 
     /**
@@ -63,12 +64,6 @@ class ItemController extends Controller
             'TempRange' => 'required|max:255',
             'NumofItems' => 'required|max:255',
             'RetailPrice' => 'required|max:255',
-            'Inventory' => 'required|integer',
-            'BestBefore' => 'required|date',
-            'StorageLocation' => 'required|max:255',
-            'InventoryDeadline' => 'required|date',
-            'DeliveryDate' => 'required|max:255',
-            'Packing' => 'required|max:255',
         ]);
 
         // dd($storeData);
@@ -151,12 +146,6 @@ class ItemController extends Controller
             'TempRange' => 'required|max:255',
             'NumofItems' => 'required|max:255',
             'RetailPrice' => 'required|max:255',
-            'Inventory' => 'required|integer',
-            'BestBefore' => 'required|date',
-            'StorageLocation' => 'required|max:255',
-            'InventoryDeadline' => 'required|date',
-            'DeliveryDate' => 'required|max:255',
-            'Packing' => 'required|max:255',
         ]);
 
         $file = $request->ItemImage;

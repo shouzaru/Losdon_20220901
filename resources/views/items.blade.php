@@ -5,10 +5,10 @@
 <div class="container mt-2 mb-2">
     <ul class="nav nav-tabs">
         <il class="nav-item">
-            <a href="{{ url('items') }}" class="nav-link active">商品登録</a>
+            <a href="{{ url('items') }}" class="nav-link active">商品マスタ登録</a>
         </il>
         <il class="nav-item">
-            <a href="{{ url('list') }}" class="nav-link">商品一覧</a>
+            <a href="{{ url('list') }}" class="nav-link">寄付商品一覧</a>
         </il>
         <il class="nav-item">
             <a href="{{ url('delivery') }}" class="nav-link">納品登録</a>
@@ -19,7 +19,7 @@
 
     <div class="card-body">
         <div class="card-title">
-            寄付商品の登録
+            寄付商品マスタの登録
         </div>
         
         <!-- バリデーションエラーの表示に使用ここから-->
@@ -101,7 +101,7 @@
             
             <!-- 入数 -->
         <div class="form-group">
-                <label for="NumofItems">入数</label>
+                <label for="NumofItems">入数/箱</label>
                 <div class="col-sm-6">
                     <input type="text" name="NumofItems" class="form-control">
                 </div>
@@ -113,68 +113,72 @@
                 <div class="col-sm-6">
                     <input type="text" name="RetailPrice" class="form-control">
                 </div>
-            </div>
-            
-            <!-- 在庫数量 -->
-        <div class="form-group">
-                <label for="Inventory">寄付としての提供数（企業での初期在庫）</label>
-                <div class="col-sm-6">
-                    <input type="text" name="Inventory" class="form-control">
-                </div>
-            </div>
-            
-            <!-- 賞味期限 -->
-        <div class="form-group">
-                <label for="BestBefore">賞味期限</label>
-                <div class="col-sm-6">
-                    <input type="date" name="BestBefore" class="form-control">
-                </div>
-            </div>
-            
-            <!-- 在庫地 -->
-        <div class="form-group">
-                <label for="StorageLocation">在庫地</label>
-                <div class="col-sm-6">
-                    <input type="text" name="StorageLocation" class="form-control">
-                </div>
-            </div>
-            
-            <!-- 在庫期限 -->
-        <div class="form-group">
-                <label for="InventoryDeadline">在庫期限</label>
-                <div class="col-sm-6">
-                    <input type="date" name="InventoryDeadline" class="form-control">
-                </div>
-            </div>
-            
-            <!-- 納期（出荷依頼してX日） -->
-        <div class="form-group">
-                <label for="DeliveryDate">納期（出荷依頼してX日）</label>
-                <div class="col-sm-6">
-                    <input type="text" name="DeliveryDate" class="form-control">
-                </div>
-            </div>
-            
-            <!-- 荷姿（パレット/バラ積み） -->
-        <div class="form-group">
-                <label for="Packing">荷姿（パレット/バラ積み）</label>
-                <div class="col-sm-6">
-                    <input type="text" name="Packing" class="form-control">
-                </div>
-            </div>
-            
+            </div>            
 
             <!-- 登録ボタン -->
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-6">
                     <button type="submit" class="btn btn-primary">
-                    登録
+                    商品マスタとして登録
                     </button>
                 </div>
             </div>
         </form>
     </div>
 
+    <!-- Item: 既に登録されてる商品のリスト -->
+    @if (count($items) > 0)
+        <div class="card-body">
+            <div class="card-body">
+                <table class="table table-striped task-table">
+                    <!-- テーブルヘッダ -->
+                    <thead>
+                        <th>商品マスタ一覧</th>
+                        <th>&nbsp;</th>
+                    </thead>
+                    <!-- テーブル本体 -->
+                    <tbody>
+                        @foreach ($items as $item)
+                            <tr>
+                                <!-- JAN -->
+                                <td class="table-text">
+                                    <div>{{ $item->JANcode }}</div>
+                                </td>
+                                <!-- 商品名 -->
+                                <td class="table-text">
+                                    <div>{{ $item->ItemName }}</div>
+                                </td>
+                                <!-- 商品重量 -->
+                                <td class="table-text">
+                                    <div>{{ $item->ItemWeight }}</div>
+                                </td>
+                            <!-- 商品寸法 -->
+                            <td class="table-text">
+                                    <div>{{ $item->ItemSize }}</div>
+                                </td>
+
+                                <!-- 商品マスタの編集 -->
+                                <td>
+                                <form action="{{ url('items/'.$item->id.'/edit') }}" method="GET"> {{ csrf_field() }}
+                                    <button type="submit" class="btn btn-primary">商品マスタの編集 </button>
+                                </form>
+                                </td>
+
+                                <!-- 寄付商品の登録 -->
+                                <td>
+                                <form action="{{ url('donations/'.$item->id.'/edit') }}" method="GET"> {{ csrf_field() }}
+                                    <button type="submit" class="btn btn-success">寄付商品の登録 </button>
+                                </form>
+                                </td>
+                            </tr>
+
+
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>		
+@endif
 
 
 
