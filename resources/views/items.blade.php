@@ -29,12 +29,12 @@
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- item image-->
-                            <a href="{{ url('/show') }}">
+                            <a href="{{ url('items/' .$item->id) }}">
                             <img class="card-img-top " src="storage/ItemImage/{{$item->ItemImage_path}}"  alt="Mage" />
                             </a>
                             <!-- item details-->
                             <div class="card-body p-4">
-                            <a href="{{ url('/show') }}">
+                            <a href="{{ url('items/' .$item->id) }}">
                             <p class="fs-7">9498594859494</p>
                             </a>
                                 <div class="text-center">
@@ -61,40 +61,34 @@
                                 </>
                             </div>
                             <!-- item-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <!-- <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ url('items/' .$item->id) }}">詳細</a></div>
-                            </div>
+                            </div> -->
+
+                            <!-- 削除ボタン と 編集ボタン と 納品数入力ボタン-->
+                            <table>
+                                <tr>
+                                    <td>
+                                        <form action="{{ url('items/'.$item->id) }}" method="POST">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                                        <button type="submit" class="btn btn-danger" onclick='return confirm("本当に削除しますか")'>削除</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <form action="{{ url('items/'.$item->id.'/edit') }}" method="GET"> {{ csrf_field() }}
+                                        <button type="submit" class="btn btn-primary">編集</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
-                    
                 </div>
-              
-                
             </div>
-            @endforeach
-                @endif
         </section>
-
-      
-
-
-<!-- ナビゲーションメニュー -->
-<div class="container mt-2 mb-2">
-    <ul class="nav nav-tabs">
-        <il class="nav-item">
-            <a href="{{ url('items') }}" class="nav-link active">商品登録</a>
-        </il>
-        <il class="nav-item">
-            <a href="{{ url('list') }}" class="nav-link">商品一覧</a>
-        </il>
-        <il class="nav-item">
-            <a href="{{ url('delivery') }}" class="nav-link">納品登録</a>
-        </il>
-    </ul>
-</div>
-
-
-   
-
-
+        @endforeach
+         @endif
 @endsection
