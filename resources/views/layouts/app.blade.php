@@ -41,7 +41,7 @@
 
                     <!-- 商品登録リンク -->
                     <a class="nav-link" href="{{ url('items/create') }}">
-                    {{ ('商品登録') }}
+                    {{ ('商品マスタ登録') }}
                      </a>
                    <!-- 出荷管理リンク -->
                     <a class="nav-link" href="{{ url('items/create') }}">
@@ -50,6 +50,10 @@
                     <!-- 納品登録 -->
                     <a class="nav-link" href="{{ url('delivery') }}">
                     {{ ('納品登録') }}
+                    </a>
+                    <!-- 納品登録 -->
+                    <a class="nav-link" href="{{ url('delivery') }}">
+                    {{ ('寄付する') }}
                     </a>
 
                         <!-- Authentication Links -->

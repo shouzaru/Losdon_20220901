@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use App\Models\Delivery;
+use App\Models\Donation;
 use Illuminate\Http\Request;
 
 class DeliveryController extends Controller
@@ -15,9 +16,19 @@ class DeliveryController extends Controller
      */
     public function index()
     {
+        // $items = Item::all();
+        // $deliveries = Delivery::all();
+        // $donations = Donation::all();
+        // return view('delivery', compact('items', 'deliveries','donations'));
+    }
+
+    public static function deliverylist(){
         $items = Item::all();
         $deliveries = Delivery::all();
-        return view('delivery', compact('items', 'deliveries'));
+        $donations = Donation::all();
+        // dd($deliveries);
+
+        return view('delivery', compact('items','deliveries','donations'));
     }
 
     /**
@@ -41,8 +52,9 @@ class DeliveryController extends Controller
 
         $storeData = $request->validate([
             'item_id' => 'required|integer',
+            'donation_id' => 'required|integer',
             'DeliveryQuantity' => 'required|integer',
-            'date' => 'required|date'
+            'date' => 'required|date',
         ]);
         // dd($storeData);
         $deliveries = Delivery::create($storeData);
@@ -68,17 +80,15 @@ class DeliveryController extends Controller
      * @param  \App\Models\Delivery  $delivery
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
-        $item = Item::find($id);
+        $request_params = $request->all();
+        $donation_id=$request_params["donation_id"];
+        $item_id=$request_params["item_id"];
 
+        $donation = Donation::find($donation_id);
+        $item = Item::find($item_id);
         $deliveries = Delivery::all();
-
-        // foreach($deliveries as $delivery){
-        //     $date=$delivery->date;
-        //     dd(date("Y/m/d",strtotime($date)));
-        // }
-
 
         
         $totalDel=0;
@@ -89,7 +99,7 @@ class DeliveryController extends Controller
             }
         }
         // dd($totalDel);
-        return view('deliveryedit', compact('item', 'deliveries', 'totalDel'));
+        return view('deliveryedit', compact('item','donation', 'deliveries', 'totalDel'));
     }
 
     /**

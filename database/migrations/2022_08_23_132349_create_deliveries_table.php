@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('deliveries', function (Blueprint $table) {
             $table->id();
             $table->integer('item_id');
+            $table->integer('donation_id');
             $table->integer('DeliveryQuantity');
             $table->dateTime('date')->nullable();//追記
             $table->timestamps();

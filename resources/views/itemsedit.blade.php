@@ -151,16 +151,25 @@
         <!-- Save ボタン/Back ボタン -->
         <div class="well well-sm">
             <button type="submit" class="btn btn-primary">Save</button>
-            <a class="btn btn-link pull-right" href="{{ url('/') }}"> Back</a>
+            <a class="btn btn-link pull-right" href="{{ url('items') }}"> Back</a>
         </div>
-        <!--/ Save ボタン/Back ボタン -->
         <!-- id 値を送信 -->
         <input type="hidden" name="id" value="{{$item->id}}" /> <!--/ id 値を送信 -->
         <!-- CSRF -->
         {{ csrf_field() }}
         <!--/ CSRF -->
-
         </form>
+
+        <!-- 商品マスタの削除 -->
+        <td>
+        <form action="{{ url('items/'.$item->id) }}" method="POST">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+                <button type="submit" class="btn btn-danger">
+                    商品マスタの削除
+                </button>
+        </form>
+        </td>
     </div>
 
 

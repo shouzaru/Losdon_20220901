@@ -24,12 +24,6 @@ return new class extends Migration
             $table->string('TempRange')->nullable();//温度帯（常温／冷蔵／冷凍）
             $table->string('NumofItems')->nullable();//入数
             $table->string('RetailPrice')->nullable();//小売希望価格
-            $table->integer('Inventory')->nullable();//在庫数量
-            $table->dateTime('BestBefore')->nullable();//賞味期限
-            $table->string('StorageLocation')->nullable();//在庫地
-            $table->dateTime('InventoryDeadline')->nullable();//在庫期限
-            $table->string('DeliveryDate')->nullable();//納期（出荷依頼してX日）
-            $table->string('Packing')->nullable();//荷姿（パレット/バラ積み）
             $table->timestamps();
         });
     }
