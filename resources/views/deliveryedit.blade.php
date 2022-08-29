@@ -1,51 +1,74 @@
 @extends('layouts.app')
 @section('content')
 
+<div class="card-body">
+ <div class="card-title">
+    トップページ/商品の詳細がここに表示される
+ </div>
 
+ <div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-7">
+        <p><img src="{{asset('storage/ItemImage')}}{{'/'}}{{$item->ItemImage_path}}" alt="IMage" class="table-img"></p>
+        </div>
 
-
-
-<div>
-    <p><img src="{{asset('storage/ItemImage')}}{{'/'}}{{$item->ItemImage_path}}" alt="IMage" class="img-fluid"></p>
-    <table>
+<div class="col-lg-5">
+        <table>
     <tr>
-            <th>donation->id</th>
-            <td></td>
-        </tr>
+            <th><p class="fs-6">JANcode</p></th>
+            <td> <p class="fs-6">{{ $item->JANcode }}</p></td>
+    </tr>
+    <tr>
+            <th><p class="fs-6">商品名</p></th>
+            <td><p class="fs-6">{{ $item->ItemName }}</p></td>
+       
     <tr>
     <tr>
-            <th>Item->item_id</th>
-            <td>{{$item->id}}</td>
-        </tr>
-
+            <th><p class="fs-6">商品寸法</p></th>
+            <td><p class="fs-6">{{$item->ItemSize }}</p></td>
+      
     <tr>
-            <th>donation->item_id</th>
-            <td></td>
-        </tr>
-
-        <tr>
-            <th>商品名</th>
-            <td>{{ $item->ItemName }}</td>
-        </tr>
-        <tr>
-        <th>今回の寄付数</th>
-            <td></td>
-        </tr>
-        <tr>
-            <th>納品済み</th>
-            <td>{{$totalDel}}</td>
-        </tr>
-
-        <tr>
-            <th>賞味期限</th>
-            <td></td>
-        </tr>
-        <tr>
-            <th>在庫期限</th>
-            <td></td>
-        </tr>
+    <tr>
+            <th><p class="fs-6">商品重量</p></th>
+            <td><p class="fs-6">{{ $item->ItemWeight }}</p></td>
+       
+    <tr>
+    <tr>
+            <th><p class="fs-6">商品寸法</p></th>
+            <td><p class="fs-6">{{ $item->ItemSize }}</p></td>
+       
+    <tr>
+    <tr>
+            <th><p class="fs-6">箱寸法</p></th>
+            <td><p class="fs-6">{{ $item->BoxSize }}</p></td>
+       
+    <tr>
+    
+    <tr>
+            <th><p class="fs-6">温度帯</p></th>
+            <td><p class="fs-6">{{ $item->TempRange }}</p></td>
+       
+    <tr>
+    <tr>
+            <th><p class="fs-6">入り数</p></th>
+            <td><p class="fs-6">{{ $item->NumofItems }}</p></td>
+       
+    <tr>
+    <tr>
+            <th><p class="fs-6">納品済み</p></th>
+            <td><p class="fs-6">{{$totalDel}}</p></td>
+       
+    <tr>
+   
     </table>
-</div>
+        </div>
+    </div>
+ </div>
+
+
+
+
+
 
 
 

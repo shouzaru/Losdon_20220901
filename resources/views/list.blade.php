@@ -1,94 +1,91 @@
 @extends('layouts.app')
 @section('content')
 
-<!-- ナビゲーションメニュー -->
-<div class="container mt-2 mb-2">
-    <ul class="nav nav-tabs">
-        <il class="nav-item">
-            <a href="{{ url('items') }}" class="nav-link">商品マスタ登録</a>
-        </il>
-        <il class="nav-item">
-            <a href="{{ url('list') }}" class="nav-link active">寄付商品一覧</a>
-        </il>
-        <il class="nav-item">
-            <a href="{{ url('deliverylist') }}" class="nav-link">納品登録</a>
-        </il>
-    </ul>
-</div>
 
-<!-- Item: 登録されてる商品のリスト -->
+<!-- Item: 既に登録されてる商品のリスト -->
 @if (count($items) > 0)
-@if (count($donations) > 0)
-@foreach ($items as $item)
-@foreach ($donations as $donation)
-@if($item->id === $donation->item_id)
-<div>
-    <p><img src="storage/ItemImage/{{$item->ItemImage_path}}" alt="IMage" class="img-fluid"></p>
-    <table>
-        <tr>
-            <th>商品名</th>
-            <td>{{ $item->ItemName }}</td>
-        </tr>
+<div class="container">
+         <div class="card-title">
+             寄付商品の登録
+         </div>
+         <div class="row">
+        <div class="card-body">
+            <div class="card-body">
+                <table class="table table-striped task-table">
+                    <!-- テーブルヘッダ -->
+                    <thead>
+                        <th>JANコード/ITFコード</th>
+                        <th>商品画像</th>
+                        <th>商品名</th>
+                        <th>商品寸法</th>
+                        <th>商品重量</th>
+                        <th>箱寸法（外寸）</th>
+                        <th>入数</th>
+                        <th>小売希望価格</th>
+                       
+                    </thead>
+                    <!-- テーブル本体 -->
+                    <tbody>
+                        @foreach ($items as $item)
+                            <tr>
+                                <!-- JAN -->
+                                <td class="table-text">
+                                    <div>{{ $item->JANcode }}</div>
+                                </td>
+                                <!-- 商品画像 -->
+                                <td class="table-text">
+                                <img class="table-img" src="storage/ItemImage/{{$item->ItemImage_path}}"  alt="Mage" />
+                                </td>
+                                <!-- 商品名 -->
+                                <td class="table-text">
+                                    <div>{{ $item->ItemName }}</div>
+                                </td>
+                                <!-- 商品重量 -->
+                                <td class="table-text">
+                                    <div>{{ $item->ItemWeight }}</div>
+                                </td>
+                               <!-- 商品寸法 -->
+                               <td class="table-text">
+                                    <div>{{ $item->ItemSize }}</div>
+                                </td>
+                                 <!-- ボックスサイズ -->
+                               <td class="table-text">
+                                    <div>{{ $item->BoxSize }}</div>
+                                </td>
+                                 <!-- 入り数 -->
+                               <td class="table-text">
+                                    <div>{{ $item->NumofItems }}</div>
+                                </td>
+                                  <!-- 小売希望価格 -->
+                               <td class="table-text">
+                                    <div>{{ $item->RetailPrice }}</div>
+                                </td>
+                                  
 
-        <tr>
-            <th>登録日</th>
-            <td>{{date("Y/m/d",strtotime($donation->created_at))}}</td>
-        </tr>
-        <tr>
-            <th>今回の寄付数</th>
-            <td>{{ $donation->Inventory }}</td>
+                                
 
-        </tr>
+                                <!-- 商品マスタの編集 -->
+                                <td>
+                                <form action="{{ url('items/'.$item->id.'/edit') }}" method="GET"> {{ csrf_field() }}
+                                    <button type="submit" class="btn btn-primary">商品マスタの編集 </button>
+                                </form>
+                                </td>
 
-        <tr>
-            <th>納品済み</th>
-            <!-- 納品済み数を計算 -->
-            @php
-            $totalDel=0;
-            foreach($deliveries as $delivery){
-                if($delivery->item_id === $item->id){
-                $del = $delivery->DeliveryQuantity;
-                $totalDel = $totalDel + $del;
-                }
-            }
-            @endphp
-            <td>{{$totalDel}}</td>
-        </tr>
+                                <!-- 寄付商品の登録 -->
+                                <td>
+                                <form action="{{ url('donations/'.$item->id.'/edit') }}" method="GET"> {{ csrf_field() }}
+                                    <button type="submit" class="btn btn-success">この商品を寄付する </button>
+                                </form>
+                                </td>
+                            </tr>
 
-        <tr>
-            <th>賞味期限</th>
-            <td></td>
-        </tr>
-        <tr>
-            <th>在庫期限</th>
-            <td></td>
-        </tr>
-    </table>
-</div>
 
-<!-- 削除ボタン と 編集ボタン と 納品数入力ボタン-->
-<table>
-    <tr>
-        <td>
-            <form action="{{ url('items/'.$item->id) }}" method="POST">
-            {{ csrf_field() }}
-            {{ method_field('DELETE') }}
-            <button type="submit" class="btn btn-danger" onclick='return confirm("本当に削除しますか")'>削除</button>
-            </form>
-        </td>
-    </tr>
-    
-    <tr>
-        <td>
-            <form action="" method="GET"> {{ csrf_field() }}
-            <button type="submit" class="btn btn-primary">寄付商品の編集</button>
-            </form>
-        </td>
-    </tr>    
-</table>
-@endif
-@endforeach
-@endforeach
-@endif
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+    </div>			
 @endif
 @endsection
