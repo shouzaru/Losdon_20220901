@@ -11,7 +11,7 @@
          <div class="row">
         <div class="card-body">
             <div class="card-body">
-                <table class="table table-striped task-table">
+                <table class="table table-striped tsk-table">
                     <!-- テーブルヘッダ -->
                     <thead>
                         <th>JANコード/ITFコード</th>
@@ -67,14 +67,14 @@
                                 <!-- 商品マスタの編集 -->
                                 <td>
                                 <form action="{{ url('items/'.$item->id.'/edit') }}" method="GET"> {{ csrf_field() }}
-                                    <button type="submit" class="btn btn-primary">商品マスタの編集 </button>
+                                    <button type="submit" class="btn btn-primary">編集 </button>
                                 </form>
                                 </td>
 
                                 <!-- 寄付商品の登録 -->
                                 <td>
                                 <form action="{{ url('donations/'.$item->id.'/edit') }}" method="GET"> {{ csrf_field() }}
-                                    <button type="submit" class="btn btn-success">この商品を寄付する </button>
+                                    <button type="submit" class="btn btn-primary">寄付する </button>
                                 </form>
                                 </td>
                             </tr>

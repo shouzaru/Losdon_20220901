@@ -3,7 +3,7 @@
      <!-- Bootstrapの定形コード… -->
      <div class="card-body">
          <div class="card-title">
-            トップページ（寄付した商品が一覧となる）
+            寄付商品の一覧
          </div>
      </div>
 <!-- 検索フォーム -->
@@ -36,15 +36,15 @@
                             <input type="hidden" name="item_id" value="{{$donation->item_id}}">  <!-- deliveryテーブルのitem_idカラムに入れるための値を送信 -->
                             </a>
                             <!-- item details-->
-                            <div class="card-body p-4">
+                            <div class="card-body pt-4">
                                 <div class="text-center">
+                               
                                     <!-- item name-->
                                     <h5 class="fw-bolder">{{ $item->ItemName }}</h5>
                                     <!-- item 寄付数-->
                                     <p class="fs-6">寄付数：{{ $donation->Inventory }}</p>
                                     <!-- 登録日 -->
                                     <p class="fs-6">登録日：{{date("Y/m/d",strtotime($donation->created_at))}}</p>
-                                    
                                      <!-- 納品済み数を計算 -->
                                       @php
                                       $totalDel=0;
@@ -61,6 +61,7 @@
                                     <p class="fs-6">賞味期限：{{ date("Y/m/d",strtotime($donation->BestBefore)) }}</p>
                                       <!-- item 在庫期限-->
                                     <p class="fs-6">在庫期限：{{ date("Y/m/d", strtotime($donation->InventoryDeadline)) }}</p>
+                                   
                                     </div>
                             </div>
                             <!-- item-->
@@ -69,32 +70,13 @@
                             </div> -->
 
                             <!-- 削除ボタン と 編集ボタン と 納品数入力ボタン-->
-                            <table>
-                                <tr>
-                                    <td>
-                                        <form action="{{ url('items/'.$item->id) }}" method="POST">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-                                        <button type="submit" class="btn btn-danger" onclick='return confirm("本当に削除しますか")'>削除</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <form action="{{ url('items/'.$item->id.'/edit') }}" method="GET"> {{ csrf_field() }}
-                                        <button type="submit" class="btn btn-primary">編集</button>
-                                        </form>
-                                    </td>
-                                </tr>
-
-                                <td>
-            <form action="{{ route('deliveries.edit',$donation->id) }}" method="GET"> {{ csrf_field() }}
-            <button type="submit" class="btn btn-success">納品情報登録画面へ</button>
-            <input type="hidden" name="donation_id" value="{{$donation->id}}">  <!-- deliveryテーブルのdonatio_idカラムに入れるための値を送信 -->
-            <input type="hidden" name="item_id" value="{{$donation->item_id}}">  <!-- deliveryテーブルのitem_idカラムに入れるための値を送信 -->
-            </form>
-        </td>
-                            </table>
+                          
+                                  <form action="{{ route('deliveries.edit',$donation->id) }}" method="GET"> {{ csrf_field() }}
+                                  <button type="submit" class="btn btn-primary">納品する</button>
+                                  <input type="hidden" name="donation_id" value="{{$donation->id}}">  <!-- deliveryテーブルのdonatio_idカラムに入れるための値を送信 -->
+                                  <input type="hidden" name="item_id" value="{{$donation->item_id}}">  <!-- deliveryテーブルのitem_idカラムに入れるための値を送信 -->
+                                  </form>
+                                 
                         </div>
                     </div>
                     @endif

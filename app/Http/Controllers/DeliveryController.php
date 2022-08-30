@@ -28,7 +28,7 @@ class DeliveryController extends Controller
         $donations = Donation::all();
         // dd($deliveries);
 
-        return view('delivery', compact('items','deliveries','donations'));
+        return view('items', compact('items','deliveries','donations'));
     }
 
     /**
