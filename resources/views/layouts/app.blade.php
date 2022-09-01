@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title name>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md border">
+        <nav class="navbar navbar-expand-md navbar-light bg-success bg-opacity-25 shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -40,13 +40,14 @@
                     <ul class="navbar-nav ms-auto">
 
                     <!-- 商品登録リンク -->
-                    <a class="nav-link" href="{{ url('items/create') }}">
+                    <a class="nav-link" href="{{ url('itemsCreate') }}">
                     {{ ('商品マスタ登録') }}
-                     </a>
+                    </a>
                     <!-- 寄付する -->
                     <a class="nav-link" href="{{ url('list') }}">
                     {{ ('寄付する') }}
                     </a>
+
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))

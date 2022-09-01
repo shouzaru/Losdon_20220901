@@ -1,68 +1,59 @@
 @extends('layouts.app')
 @section('content')
 
+<!-- ナビゲーションメニュー -->
+<div class="container mt-2 mb-2">
+    <ul class="nav nav-tabs">
+        <il class="nav-item">
+            <a href="{{ url('items') }}" class="nav-link">商品登録</a>
+        </il>
+        <il class="nav-item">
+            <a href="{{ url('list') }}" class="nav-link">商品一覧</a>
+        </il>
+        <il class="nav-item">
+            <a href="{{ url('delivery') }}" class="nav-link">納品登録</a>
+        </il>
+    </ul>
+</div>
 
 
 
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-lg-7">
-
-        <table>
-            <tr>
+<div>
+    <p><img src="{{asset('storage/ItemImage')}}{{'/'}}{{$item->ItemImage_path}}" alt="IMage" class="img-fluid"></p>
+    <table>
+        <tr>
             <th>商品名</th>
             <td>{{ $item->ItemName }}</td>
-            </tr>
-          </table>
-          <p><img src="{{asset('storage/ItemImage')}}{{'/'}}{{$item->ItemImage_path}}" alt="IMage" class="img-fluid"></p>
-          </div>
-    
-        <div class="col-lg-5">
-           
-        
-
+        </tr>
+    </table>
+</div>
 
 
 
 <!--納品登録ボタン-->
-         <form action="{{ url('donations') }}" method="POST" class="form-horizontal mt-3" enctype="multipart/form-data">
-             {{ csrf_field() }}
-             <input type="hidden" name="item_id" value="{{$item->id}}">
-                 <div class="col-sm-6">
-                     <label for="JAN">今回の寄付数</label>
-                     <input type="text" name="Inventory" class="form-control">
-                 </div>
-                 <div class="col-sm-6">
-                     <label for="JAN">賞味期限</label>
-                     <input type="date" name="BestBefore" class="form-control">
-                 </div>
-                 <div class="col-sm-6">
-                     <label for="JAN">在庫地</label>
-                     <input type="text" name="StorageLocation" class="form-control">
-                 </div>
-                 <div class="col-sm-6">
-                     <label for="JAN">在庫期限</label>
-                     <input type="date" name="InventoryDeadline" class="form-control">
-                 </div>
-                 <div class="col-sm-6">
-                     <label for="JAN">納期</label>
-                     <input type="text" name="DeliveryDate" class="form-control">
-                 </div>
-                 <div class="col-sm-6">
-                     <label for="JAN">荷姿</label>
-                     <input type="text" name="Packing" class="form-control">
-                 </div>
-                 <div class="col-sm-6">
-                     <label for="JAN">備考</label>
-                     <input type="text" name="remarks" class="form-control">
-                 </div>
-                
-                 <button type="submit" class="btn btn-primary mt-3">寄付商品として登録</button>
-                
-         </form>
+<table>        
+    <tr>
+        <td>
+            <form action="{{ url('donations') }}" method="POST"> 
+                {{ csrf_field() }}
 
-</div>
-</div>
+            <input type="hidden" name="item_id" value="{{$item->id}}">  <!-- donationsテーブルのitem_idカラムに入れるための値を送信 -->
+            <p>今回の寄付数<input type="text" name="Inventory"></p>
+            <p>賞味期限<input type="date" name="BestBefore"></p>
+            <p>在庫地<input type="text" name="StorageLocation"></p>
+            <p>在庫期限<input type="date" name="InventoryDeadline"></p>
+            <p>納期<input type="text" name="DeliveryDate"></p>
+            <p>荷姿<input type="text" name="Packing"></p>
+            <p>備考<textarea name="remarks"></textarea></p>
+            <button type="submit" class="btn btn-success">寄付商品として登録</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+
+
+
 
 
 

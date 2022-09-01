@@ -5,13 +5,14 @@
 <!-- Item: 既に登録されてる商品のリスト -->
 @if (count($items) > 0)
 <div class="container">
-         <div class="card-title">
-             寄付商品の登録
-         </div>
-         <div class="row">
+        <div class="card-title">
+            寄付商品の登録
+        </div>
+    
+    <div class="row">
         <div class="card-body">
             <div class="card-body">
-                <table class="table table-striped tsk-table">
+                <table class="table table-striped task-table">
                     <!-- テーブルヘッダ -->
                     <thead>
                         <th>JANコード/ITFコード</th>
@@ -22,7 +23,7 @@
                         <th>箱寸法（外寸）</th>
                         <th>入数</th>
                         <th>小売希望価格</th>
-                       
+
                     </thead>
                     <!-- テーブル本体 -->
                     <tbody>
@@ -67,14 +68,14 @@
                                 <!-- 商品マスタの編集 -->
                                 <td>
                                 <form action="{{ url('items/'.$item->id.'/edit') }}" method="GET"> {{ csrf_field() }}
-                                    <button type="submit" class="btn btn-primary">編集 </button>
+                                    <button type="submit" class="btn btn-primary">商品マスタの編集 </button>
                                 </form>
                                 </td>
 
                                 <!-- 寄付商品の登録 -->
                                 <td>
                                 <form action="{{ url('donations/'.$item->id.'/edit') }}" method="GET"> {{ csrf_field() }}
-                                    <button type="submit" class="btn btn-primary">寄付する </button>
+                                    <button type="submit" class="btn btn-success">この商品を寄付する </button>
                                 </form>
                                 </td>
                             </tr>

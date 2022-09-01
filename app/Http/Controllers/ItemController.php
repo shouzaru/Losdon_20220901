@@ -44,7 +44,16 @@ class ItemController extends Controller
      */
     public function create()
     {
-       return view('itemsCreate');
+    //    return view('itemsCreate');
+    
+    }
+
+    public function itemsCreate()
+    {
+        $items = Item::all();
+        $deliveries = Delivery::all();
+        $donations = Donation::all();
+        return view('itemsCreate', compact('items','deliveries','donations'));
     }
 
     /**

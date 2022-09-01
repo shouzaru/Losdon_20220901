@@ -76,7 +76,6 @@ class DonationController extends Controller
     public function edit($id)
     {
         $item = Item::find($id);
-        
         return view('donationsedit',compact('item'));
     }
 
@@ -100,6 +99,7 @@ class DonationController extends Controller
      */
     public function destroy(Donation $donation)
     {
-        //
+        $donation->delete();
+        return redirect('items');
     }
 }

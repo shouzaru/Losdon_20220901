@@ -100,57 +100,10 @@
                 </div>
             </div>
             
-            <!-- 在庫数量 -->
-            <div class="form-group">
-                <label for="Inventory">在庫数量</label>
-                <div class="col-sm-6">
-                    <input type="text" name="Inventory" class="form-control" value="{{$item->Inventory}}">
-                </div>
-            </div>
-            
-            <!-- 賞味期限 -->
-            <div class="form-group">
-                <label for="BestBefore">賞味期限</label>
-                <div class="col-sm-6">
-                    <input type="date" name="BestBefore" class="form-control" value="{{$item->BestBefore}}">
-                </div>
-            </div>
-            
-            <!-- 在庫地 -->
-            <div class="form-group">
-                <label for="StorageLocation">在庫地</label>
-                <div class="col-sm-6">
-                    <input type="text" name="StorageLocation" class="form-control" value="{{$item->StorageLocation}}">
-                </div>
-            </div>
-            
-            <!-- 在庫期限 -->
-            <div class="form-group">
-                <label for="InventoryDeadline">在庫期限</label>
-                <div class="col-sm-6">
-                    <input type="date" name="InventoryDeadline" class="form-control" value="{{$item->InventoryDeadline}}">
-                </div>
-            </div>
-            
-            <!-- 納期（出荷依頼してX日） -->
-            <div class="form-group">
-                <label for="DeliveryDate">納期（出荷依頼してX日）</label>
-                <div class="col-sm-6">
-                    <input type="text" name="DeliveryDate" class="form-control" value="{{$item->DeliveryDate}}">
-                </div>
-            </div>
-            
-            <!-- 荷姿（パレット/バラ積み） -->
-        <div class="form-group">
-                <label for="Packing">荷姿（パレット/バラ積み）</label>
-                <div class="col-sm-6">
-                    <input type="text" name="Packing" class="form-control" value="{{$item->Packing}}">
-                </div>
-            </div>
 
         <!-- Save ボタン/Back ボタン -->
         <div class="well well-sm">
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary">この商品マスタを更新する</button>
             <a class="btn btn-link pull-right" href="{{ url('items') }}"> Back</a>
         </div>
         <!-- id 値を送信 -->
@@ -166,7 +119,7 @@
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}
                 <button type="submit" class="btn btn-danger">
-                    商品マスタの削除
+                    この商品マスタを削除する
                 </button>
         </form>
         </td>

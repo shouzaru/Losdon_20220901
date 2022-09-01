@@ -40,5 +40,11 @@ Route::resource('donations', DonationController::class);  //寄付商品Donation
 
 Route::get('/', [ItemController::class, 'index']);
 
+Route::get('itemsCreate', [ItemController::class, 'itemsCreate']);
+
+//test
+Route::get('/show', function () {
+  return view('itemsShow');
+});
 
 

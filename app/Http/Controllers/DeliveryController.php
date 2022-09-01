@@ -28,7 +28,7 @@ class DeliveryController extends Controller
         $donations = Donation::all();
         // dd($deliveries);
 
-        return view('items', compact('items','deliveries','donations'));
+        return view('delivery', compact('items','deliveries','donations'));
     }
 
     /**
@@ -93,7 +93,7 @@ class DeliveryController extends Controller
         
         $totalDel=0;
         foreach($deliveries as $delivery){
-            if($delivery->item_id === $item->id){
+            if($delivery->donation_id === $donation->id){
                 $del = $delivery->DeliveryQuantity;
                 $totalDel = $totalDel + $del;
             }
